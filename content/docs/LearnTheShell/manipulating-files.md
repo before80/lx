@@ -53,10 +53,10 @@ Before we begin with our commands, we'll first look at a shell feature that make
 
 | **通配符 Wildcard** | **含义 Meaning**                                             |
 | :------------------ | :----------------------------------------------------------- |
-| *****               | 匹配任意字符<br />Matches any characters                     |
-| **?**               | 匹配任意单个字符<br />Matches any single character           |
-| **[characters]**    | 匹配字符集中的任意字符。字符集也可以表示为 *POSIX 字符类*，如下所示：POSIX 字符类<br />**[:alnum:]**字母数字字符<br />**[:alpha:]**字母字符<br />**[:digit:]**数字字符<br />**[:upper:]**大写字母字符<br />**[:lower:]**小写字母字符<br />Matches any character that is a member of the set *characters*. The set of characters may also be expressed as a *POSIX character class* such as one of the following:POSIX Character Classes**[:alnum:]**Alphanumeric characters**[:alpha:]**Alphabetic characters**[:digit:]**Numerals**[:upper:]**Uppercase alphabetic characters**[:lower:]**Lowercase alphabetic characters |
-| **[!characters]**   | 匹配不属于字符集中的任意字符<br />Matches any character that is not a member of the set *characters* |
+| *                   | 匹配任意字符<br />Matches any characters                     |
+| ?                   | 匹配任意单个字符<br />Matches any single character           |
+| [characters]        | 匹配字符集中的任意字符。字符集也可以表示为 *POSIX 字符类*，如下所示：POSIX 字符类<br />[:alnum:] 字母数字字符<br />[:alpha:] 字母字符<br />[:digit:] 数字字符<br />[:upper:] 大写字母字符<br />[:lower:] 小写字母字符<br />Matches any character that is a member of the set *characters*. The set of characters may also be expressed as a *POSIX character class* such as one of the following:POSIX Character Classes**[:alnum:]**Alphanumeric characters**[:alpha:]**Alphabetic characters**[:digit:]**Numerals**[:upper:]**Uppercase alphabetic characters**[:lower:]**Lowercase alphabetic characters |
+| [!characters]       | 匹配不属于字符集中的任意字符<br />Matches any character that is not a member of the set *characters* |
 
 Using wildcards, it is possible to construct very sophisticated selection criteria for filenames. Here are some examples of patterns and what they match:
 
