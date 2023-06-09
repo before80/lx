@@ -153,11 +153,11 @@ This notation says that the command `cd` may be followed optionally by either a 
 
 ​	这个符号说明表示 `cd` 命令后面可以选择跟着“-L”或者“-P”，然后再可选地跟着参数“dir”。
 
-### --help
+### `--help`
 
-Many executable programs support a “--help” option that displays a description of the command's supported syntax and options. For example:
+Many executable programs support a “`--help`” option that displays a description of the command's supported syntax and options. For example:
 
-​	许多可执行程序支持“--help”选项，它会显示命令的支持语法和选项的描述。例如：
+​	许多可执行程序支持“`--help`”选项，它会显示命令的支持语法和选项的描述。例如：
 
 ```bash
 [me@linuxbox me]$ mkdir --help
@@ -177,7 +177,7 @@ too.
 
 Some programs don't support the “--help” option, but try it anyway. Often it results in an error message that will reveal similar usage information.
 
-​	有些程序不支持“--help”选项，但还是可以尝试一下。通常会显示出一个错误消息，其中包含类似的使用信息。
+​	有些程序不支持“`--help`”选项，但还是可以尝试一下。通常会显示出一个错误消息，其中包含类似的使用信息。
 
 ### man
 
@@ -191,7 +191,7 @@ man program
 
 where “program” is the name of the command to view. Man pages vary somewhat in format but generally contain a title, a synopsis of the command's syntax, a description of the command's purpose, and a listing and description of each of the command's options. Man pages, however, do not usually include examples, and are intended as a reference, not a tutorial. Let's try viewing the man page for the `ls` command:
 
-​	其中“程序名”是要查看的命令的名称。Man页的格式有所不同，但通常包含标题、命令语法的概述、命令目的的描述以及每个命令选项的列表和描述。不过，Man页通常不包含示例，并且旨在作为参考而不是教程。让我们尝试查看 `ls` 命令的 man 页：
+​	其中“program”是要查看的命令的名称。Man页的格式有所不同，但通常包含标题、命令语法的概述、命令目的的描述以及每个命令选项的列表和描述。不过，Man页通常不包含示例，并且旨在作为参考而不是教程。让我们尝试查看 `ls` 命令的 man 页：
 
 ```bash
 [me@linuxbox me]$ man ls

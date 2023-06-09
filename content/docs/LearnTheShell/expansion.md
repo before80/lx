@@ -12,9 +12,9 @@ draft = false
 
 https://linuxcommand.org/lc3_lts0080.php
 
-Each time we type a command line and press the enter key, bash performs several processes upon the text before it carries out our command. We have seen a couple of cases of how a simple character sequence, for example “*”, can have a lot of meaning to the shell. The process that makes this happen is called *expansion*. With expansion, we type something and it is expanded into something else before the shell acts upon it. To demonstrate what we mean by this, let's take a look at the `echo` command. `echo` is a shell builtin that performs a very simple task. It prints out its text arguments on standard output:
+Each time we type a command line and press the enter key, bash performs several processes upon the text before it carries out our command. We have seen a couple of cases of how a simple character sequence, for example "`*`", can have a lot of meaning to the shell. The process that makes this happen is called *expansion*. With expansion, we type something and it is expanded into something else before the shell acts upon it. To demonstrate what we mean by this, let's take a look at the `echo` command. `echo` is a shell builtin that performs a very simple task. It prints out its text arguments on standard output:
 
-​	每次我们在命令行中输入命令并按下回车键时，bash在执行我们的命令之前会对文本进行几个处理过程。我们已经看到了一些简单字符序列（例如“*”）对于shell来说具有很多意义的情况。使这种情况发生的过程被称为*扩展*。通过扩展，我们在键入某些内容时，shell会在对其执行操作之前将其扩展为其他内容。为了演示我们所说的，让我们来看一下`echo`命令。`echo`是一个shell内置命令，执行一个非常简单的任务，即在标准输出上打印出其文本参数：
+​	每次我们在命令行中输入命令并按下回车键时，bash在执行我们的命令之前会对文本进行几个处理过程。我们已经看到了一些简单字符序列（例如"`*`"）对于shell来说具有很多意义的情况。使这种情况发生的过程被称为*扩展*。通过扩展，我们在键入某些内容时，shell会在对其执行操作之前将其扩展为其他内容。为了演示我们所说的，让我们来看一下`echo`命令。`echo`是一个shell内置命令，执行一个非常简单的任务，即在标准输出上打印出其文本参数：
 
 ```bash
 [me@linuxbox me]$ echo this is a test
@@ -30,9 +30,9 @@ That's pretty straightforward. Any argument passed to `echo` gets displayed. Let
 Desktop Documents ls-output.txt Music Pictures Public Templates Videos
 ```
 
-So what just happened? Why didn't `echo` print “*”? As we recall from our work with wildcards, the “*” character means match any characters in a filename, but what we didn't see in our original discussion was how the shell does that. The simple answer is that the shell expands the “*” into something else (in this instance, the names of the files in the current working directory) before the `echo` command is executed. When the enter key is pressed, the shell automatically expands any qualifying characters on the command line before the command is carried out, so the `echo` command never saw the “*”, only its expanded result. Knowing this, we can see that `echo` behaved as expected.
+So what just happened? Why didn't `echo` print "`*`"? As we recall from our work with wildcards, the "`*`"character means match any characters in a filename, but what we didn't see in our original discussion was how the shell does that. The simple answer is that the shell expands the "*" into something else (in this instance, the names of the files in the current working directory) before the `echo` command is executed. When the enter key is pressed, the shell automatically expands any qualifying characters on the command line before the command is carried out, so the `echo` command never saw the "`*`", only its expanded result. Knowing this, we can see that `echo` behaved as expected.
 
-​	发生了什么？为什么`echo`没有打印出“*”？从我们之前使用通配符的工作中，我们记得“*”字符表示匹配文件名中的任意字符，但是我们在原始讨论中没有看到shell是如何实现的。简单的答案是，shell在执行`echo`命令之前将“*”扩展为其他内容（在这种情况下是当前工作目录中文件的名称）。当按下回车键时，shell会自动在执行命令之前展开命令行上的任何限定字符，因此`echo`命令从未看到“*”，只看到其扩展后的结果。了解这一点，我们可以看到`echo`的行为符合预期。
+​	发生了什么？为什么`echo`没有打印出"`*`"？从我们之前使用通配符的工作中，我们记得"`*`"字符表示匹配文件名中的任意字符，但是我们在原始讨论中没有看到shell是如何实现的。简单的答案是，shell在执行`echo`命令之前将"`*`"扩展为其他内容（在这种情况下是当前工作目录中文件的名称）。当按下回车键时，shell会自动在执行命令之前展开命令行上的任何限定字符，因此`echo`命令从未看到"`*`"，只看到其扩展后的结果。了解这一点，我们可以看到`echo`的行为符合预期。
 
 ## 路径名扩展 Pathname Expansion
 
@@ -91,18 +91,18 @@ and looking beyond our home directory:
 
 ## 波浪号扩展 Tilde Expansion
 
-As we recall from our introduction to the `cd` command, the tilde character (“~”) has a special meaning. When used at the beginning of a word, it expands into the name of the home directory of the named user, or if no user is named, the home directory of the current user:
+As we recall from our introduction to the `cd` command, the tilde character ("`~`") has a special meaning. When used at the beginning of a word, it expands into the name of the home directory of the named user, or if no user is named, the home directory of the current user:
 
-​	正如我们在介绍`cd`命令时所记得的，波浪号（“~”）具有特殊的含义。当在单词的开头使用时，它会扩展为命名用户的主目录，如果没有指定用户，则扩展为当前用户的主目录：
+​	正如我们在介绍`cd`命令时所记得的，波浪号（"`~`"）具有特殊的含义。当在单词的开头使用时，它会扩展为命名用户的主目录，如果没有指定用户，则扩展为当前用户的主目录：
 
 ```bash
 [me@linuxbox me]$ echo ~
 /home/me
 ```
 
-If user “foo” has an account, then:
+If user "foo" has an account, then:
 
-​	如果用户“foo”有一个帐户，则：
+​	如果用户"foo"有一个帐户，则：
 
 ```bash
 [me@linuxbox me]$ echo ~foo
@@ -207,9 +207,9 @@ Brace expansions may be nested:
 aA1b aA2b aB3b aB4b
 ```
 
-So what is this good for? The most common application is to make lists of files or directories to be created. For example, if we were a photographer and had a large collection of images we wanted to organize into years and months, the first thing we might do is create a series of directories named in numeric “Year-Month” format. This way, the directory names will sort in chronological order. we could type out a complete list of directories, but that's a lot of work and it's error-prone too. Instead, we could do this:
+So what is this good for? The most common application is to make lists of files or directories to be created. For example, if we were a photographer and had a large collection of images we wanted to organize into years and months, the first thing we might do is create a series of directories named in numeric "Year-Month" format. This way, the directory names will sort in chronological order. we could type out a complete list of directories, but that's a lot of work and it's error-prone too. Instead, we could do this:
 
-​	那么这有什么好处？最常见的应用是创建要创建的文件或目录的列表。例如，如果我们是摄影师，有很多图像要按年份和月份组织，我们可能首先要做的是创建以数字“年份-月份”格式命名的一系列目录。这样，目录名称将按照时间顺序排序。我们可以输入完整的目录列表，但那是很麻烦的工作，而且容易出错。相反，我们可以这样做：
+​	那么这有什么好处？最常见的应用是创建要创建的文件或目录的列表。例如，如果我们是摄影师，有很多图像要按年份和月份组织，我们可能首先要做的是创建以数字"年份-月份"格式命名的一系列目录。这样，目录名称将按照时间顺序排序。我们可以输入完整的目录列表，但那是很麻烦的工作，而且容易出错。相反，我们可以这样做：
 
 ```bash
 [me@linuxbox me]$ mkdir Photos
@@ -230,9 +230,9 @@ Pretty slick!
 
 ## 参数扩展 Parameter Expansion
 
-We're only going to touch briefly on *parameter expansion* in this lesson, but we'll be covering it more later. It's a feature that is more useful in shell scripts than directly on the command line. Many of its capabilities have to do with the system's ability to store small chunks of data and to give each chunk a name. Many such chunks, more properly called *variables*, are available for our examination. For example, the variable named “USER” contains our user name. To invoke parameter expansion and reveal the contents of USER we would do this:
+We're only going to touch briefly on *parameter expansion* in this lesson, but we'll be covering it more later. It's a feature that is more useful in shell scripts than directly on the command line. Many of its capabilities have to do with the system's ability to store small chunks of data and to give each chunk a name. Many such chunks, more properly called *variables*, are available for our examination. For example, the variable named "USER" contains our user name. To invoke parameter expansion and reveal the contents of USER we would do this:
 
-​	在本课程中，我们只会简要涉及*参数扩展*，但我们将在后面对其进行更详细的介绍。这是一个在Shell脚本中比在命令行直接使用更有用的功能。它的许多功能与系统存储小数据块和为每个块命名有关。我们可以检查许多这样的块，更准确地称为*变量*。例如，名为“USER”的变量包含我们的用户名。要调用参数扩展并显示USER的内容，我们可以这样做：
+​	在本课程中，我们只会简要涉及*参数扩展*，但我们将在后面对其进行更详细的介绍。这是一个在Shell脚本中比在命令行直接使用更有用的功能。它的许多功能与系统存储小数据块和为每个块命名有关。我们可以检查许多这样的块，更准确地称为*变量*。例如，名为"USER"的变量包含我们的用户名。要调用参数扩展并显示USER的内容，我们可以这样做：
 
 ```bash
 [me@linuxbox me]$ echo $USER
@@ -329,15 +329,15 @@ or:
 The total is 00.00
 ```
 
-In the first example, word-splitting by the shell removed extra whitespace from the echo command's list of arguments. In the second example, parameter expansion substituted an empty string for the value of “$1” because it was an undefined variable. The shell provides a mechanism called *quoting* to selectively suppress unwanted expansions.
+In the first example, word-splitting by the shell removed extra whitespace from the echo command's list of arguments. In the second example, parameter expansion substituted an empty string for the value of "`$1`" because it was an undefined variable. The shell provides a mechanism called *quoting* to selectively suppress unwanted expansions.
 
-​	在第一个示例中，Shell 的词分割功能删除了 echo 命令参数列表中的额外空格。在第二个示例中，参数扩展将一个空字符串替换为“$1”的值，因为它是一个未定义的变量。Shell 提供了一种称为*引号*的机制，可以选择性地抑制不需要的扩展。
+​	在第一个示例中，Shell 的词分割功能删除了 echo 命令参数列表中的额外空格。在第二个示例中，参数扩展将一个空字符串替换为"`$1`"的值，因为它是一个未定义的变量。Shell 提供了一种称为*引号*的机制，可以选择性地抑制不需要的扩展。
 
 ## 双引号 Double Quotes
 
-The first type of quoting we will look at is double quotes. If we place text inside double quotes, all the special characters used by the shell lose their special meaning and are treated as ordinary characters. The exceptions are “$”, “\” (backslash), and “`” (back- quote). This means that word-splitting, pathname expansion, tilde expansion, and brace expansion are suppressed, but parameter expansion, arithmetic expansion, and command substitution are still carried out. Using double quotes, we can cope with filenames containing embedded spaces. Imagine we were the unfortunate victim of a file called `two words.txt`. If we tried to use this on the command line, word-splitting would cause this to be treated as two separate arguments rather than the desired single argument:
+The first type of quoting we will look at is double quotes. If we place text inside double quotes, all the special characters used by the shell lose their special meaning and are treated as ordinary characters. The exceptions are "`$`", "`\`" (backslash), and "\`" (back- quote). This means that word-splitting, pathname expansion, tilde expansion, and brace expansion are suppressed, but parameter expansion, arithmetic expansion, and command substitution are still carried out. Using double quotes, we can cope with filenames containing embedded spaces. Imagine we were the unfortunate victim of a file called `two words.txt`. If we tried to use this on the command line, word-splitting would cause this to be treated as two separate arguments rather than the desired single argument:
 
-​	我们将首先看一下的引号类型是双引号。如果我们将文本放在双引号内，Shell 中使用的所有特殊字符都失去了它们的特殊含义，被视为普通字符。例外的是 "$"、""（反斜杠）和 "`"（反引号）。这意味着词分割、路径名扩展、波浪线扩展和大括号扩展被抑制，但参数扩展、算术扩展和命令替换仍然会进行。使用双引号，我们可以处理包含空格的文件名。假设我们是一个不幸的“two words.txt”文件的受害者。如果我们尝试在命令行上使用它，词分割将使其被视为两个独立的参数，而不是所需的单个参数：
+​	我们将首先看一下的引号类型是双引号。如果我们将文本放在双引号内，Shell 中使用的所有特殊字符都失去了它们的特殊含义，被视为普通字符。例外的是 "`$`"、"\`\`"（反斜杠）和 "\`"（反引号）。这意味着词分割、路径名扩展、波浪线扩展和大括号扩展被抑制，但参数扩展、算术扩展和命令替换仍然会进行。使用双引号，我们可以处理包含空格的文件名。假设我们是一个不幸的`two words.txt`文件的受害者。如果我们尝试在命令行上使用它，词分割将使其被视为两个独立的参数，而不是所需的单个参数：
 
 ```bash
 [me@linuxbox me]$ ls -l two words.txt
@@ -441,17 +441,17 @@ Sometimes we only want to quote a single character. To do this, we can precede a
 The balance for user me is: $5.00
 ```
 
-It is also common to use escaping to eliminate the special meaning of a character in a filename. For example, it is possible to use characters in filenames that normally have special meaning to the shell. These would include “$”, “!”, “&”, “ “, and others. To include a special character in a filename we can to this:
+It is also common to use escaping to eliminate the special meaning of a character in a filename. For example, it is possible to use characters in filenames that normally have special meaning to the shell. These would include "`$`", "`!`", "`&`", " ", and others. To include a special character in a filename we can to this:
 
-​	在文件名中，使用转义通常是为了消除字符的特殊含义。例如，可以在文件名中使用通常对shell具有特殊含义的字符，包括"$"、"!"、"&"、" "和其他字符。要在文件名中包含特殊字符，我们可以这样做：
+​	在文件名中，使用转义通常是为了消除字符的特殊含义。例如，可以在文件名中使用通常对shell具有特殊含义的字符，包括"`$`"、"`!`"、"`&`"、" "和其他字符。要在文件名中包含特殊字符，我们可以这样做：
 
 ```bash
 [me@linuxbox me]$ mv bad\&filename good_filename
 ```
 
-To allow a backslash character to appear, escape it by typing “\\”. Note that within single quotes, the backslash loses its special meaning and is treated as an ordinary character.
+To allow a backslash character to appear, escape it by typing "`\`". Note that within single quotes, the backslash loses its special meaning and is treated as an ordinary character.
 
-​	要允许反斜杠字符出现，通过键入“\”来转义它。请注意，在单引号内部，反斜杠失去了其特殊含义，被视为普通字符。
+​	要允许反斜杠字符出现，通过键入"`\`"来转义它。请注意，在单引号内部，反斜杠失去了其特殊含义，被视为普通字符。
 
 ## 更多反斜杠技巧 More Backslash Tricks
 

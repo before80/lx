@@ -55,8 +55,8 @@ Before we begin with our commands, we'll first look at a shell feature that make
 | :------------------ | :----------------------------------------------------------- |
 | *                   | 匹配任意字符<br />Matches any characters                     |
 | ?                   | 匹配任意单个字符<br />Matches any single character           |
-| [characters]        | 匹配字符集中的任意字符。字符集也可以表示为 *POSIX 字符类*，如下所示：POSIX 字符类<br />[:alnum:] 字母数字字符<br />[:alpha:] 字母字符<br />[:digit:] 数字字符<br />[:upper:] 大写字母字符<br />[:lower:] 小写字母字符<br />Matches any character that is a member of the set *characters*. The set of characters may also be expressed as a *POSIX character class* such as one of the following:POSIX Character Classes**[:alnum:]**Alphanumeric characters**[:alpha:]**Alphabetic characters**[:digit:]**Numerals**[:upper:]**Uppercase alphabetic characters**[:lower:]**Lowercase alphabetic characters |
-| [!characters]       | 匹配不属于字符集中的任意字符<br />Matches any character that is not a member of the set *characters* |
+| [characters]        | 匹配字符集中的任意字符。字符集也可以表示为 POSIX 字符类，如下所示：POSIX 字符类<br />[:alnum:] 字母数字字符<br />[:alpha:] 字母字符<br />[:digit:] 数字字符<br />[:upper:] 大写字母字符<br />[:lower:] 小写字母字符<br />Matches any character that is a member of the set characters. The set of characters may also be expressed as a POSIX character class such as one of the following:POSIX Character Classes<br />[:alnum:] Alphanumeric characters<br />[:alpha:]Alphabetic characters<br />[:digit:] Numerals<br />[:upper:] Uppercase alphabetic characters<br />[:lower:] Lowercase alphabetic characters |
+| [!characters]       | 匹配不属于字符集中的任意字符<br />Matches any character that is not a member of the set  characters |
 
 Using wildcards, it is possible to construct very sophisticated selection criteria for filenames. Here are some examples of patterns and what they match:
 
@@ -103,12 +103,12 @@ Other useful examples of `cp` and its options include:
 
 ​	`cp` 和其选项的其他有用示例包括：
 
-| **命令 Command**      | **结果 Results**                                             |
-| :-------------------- | :----------------------------------------------------------- |
-| `cp *file1 file2*`    | 将 *file1* 的内容复制到 *file2*。如果 *file2* 不存在，则创建它；**否则，file2 将被 file1 的内容静默覆盖**。<br />Copies the contents of *file1* into *file2*. If *file2* does not exist, it is created; **otherwise, \*file2\* is silently overwritten with the contents of \*file1\*.** |
-| `cp -i *file1 file2*` | 与上面相同，然而，由于指定了 "-i"（交互式）选项，如果 *file2* 存在，则在覆盖它之前会提示用户。<br />Like above however, since the "-i" (interactive) option is specified, if *file2* exists, the user is prompted before it is overwritten with the contents of *file1*. |
-| `cp *file1 dir1*`     | 将 *file1* 的内容（命名为 *file1*）复制到目录 *dir1* 内。<br />Copy the contents of *file1* (into a file named *file1*) inside of directory *dir1*. |
-| `cp -R *dir1 dir2*`   | 复制目录 *dir1* 的内容。如果目录 *dir2* 不存在，则创建它。否则，它在目录 *dir2* 中创建一个名为 *dir1* 的目录。<br />Copy the contents of the directory *dir1*. If directory *dir2* does not exist, it is created. Otherwise, it creates a directory named *dir1* within directory *dir2*. |
+| **命令 Command**    | **结果 Results**                                             |
+| :------------------ | :----------------------------------------------------------- |
+| `cp file1 file2`    | 将 *file1* 的内容复制到 *file2*。如果 *file2* 不存在，则创建它；**否则，file2 将被 file1 的内容静默覆盖**。<br />Copies the contents of *file1* into *file2*. If *file2* does not exist, it is created; **otherwise, file2 is silently overwritten with the contents of file1.** |
+| `cp -i file1 file2` | 与上面相同，然而，由于指定了 "-i"（交互式）选项，如果 file2 存在，则在覆盖它之前会提示用户。<br />Like above however, since the "-i" (interactive) option is specified, if file2 exists, the user is prompted before it is overwritten with the contents of file1. |
+| `cp file1 dir1`     | 将 *file1* 的内容（命名为 *file1*）复制到目录 *dir1* 内。<br />Copy the contents of *file1* (into a file named *file1*) inside of directory *dir1*. |
+| `cp -R dir1 dir2`   | 复制目录 *dir1* 的内容。如果目录 *dir2* 不存在，则创建它。否则，它在目录 *dir2* 中创建一个名为 *dir1* 的目录。<br />Copy the contents of the directory *dir1*. If directory *dir2* does not exist, it is created. Otherwise, it creates a directory named *dir1* within directory *dir2*. |
 
 ## mv
 
@@ -132,12 +132,12 @@ Examples of `mv` and its options include:
 
 ​	`mv` 和其选项的示例包括：
 
-| **命令 Command**        | **结果 Results**                                             |
-| :---------------------- | :----------------------------------------------------------- |
-| `mv *file1 file2*`      | 如果 *file2* 不存在，则将 *file1* 重命名为 *file2*。**如果 file2存在，则它的内容将被 file1 的内容静默替换**。<br />If *file2* does not exist, then *file1* is renamed *file2*. **If file2 exists, its contents are silently replaced with the contents of file1.** |
-| `mv -i *file1 file2*`   | 与上面相同，然而，由于指定了 "-i"（交互式）选项，如果 *file2* 存在，则在覆盖它之前会提示用户。<br />Like above however, since the "-i" (interactive) option is specified, if *file2* exists, the user is prompted before it is overwritten with the contents of *file1*. |
-| `mv *file1 file2 dir1*` | 将文件 *file1* 和 *file2* 移动到目录 *dir1*。如果 *dir1* 不存在，`mv` 将报错退出。<br />The files *file1* and *file2* are moved to directory *dir1*. If *dir1* does not exist, `mv` will exit with an error. |
-| `mv *dir1 dir2*`        | 如果 *dir2* 不存在，则将 *dir1* 重命名为 *dir2*。如果 *dir2* 存在，则将目录 *dir1* 移动到目录 *dir2* 中。<br />If *dir2* does not exist, then *dir1* is renamed *dir2*. If *dir2* exists, the directory *dir1* is moved within directory *dir2*. |
+| **命令 Command**      | **结果 Results**                                             |
+| :-------------------- | :----------------------------------------------------------- |
+| `mv file1 file2`      | 如果 *file2* 不存在，则将 *file1* 重命名为 *file2*。**如果 file2存在，则它的内容将被 file1 的内容静默替换**。<br />If *file2* does not exist, then *file1* is renamed *file2*. **If file2 exists, its contents are silently replaced with the contents of file1.** |
+| `mv -i file1 file2`   | 与上面相同，然而，由于指定了 "-i"（交互式）选项，如果 *file2* 存在，则在覆盖它之前会提示用户。<br />Like above however, since the "-i" (interactive) option is specified, if *file2* exists, the user is prompted before it is overwritten with the contents of *file1*. |
+| `mv file1 file2 dir1` | 将文件 *file1* 和 *file2* 移动到目录 *dir1*。如果 *dir1* 不存在，`mv` 将报错退出。<br />The files *file1* and *file2* are moved to directory *dir1*. If *dir1* does not exist, `mv` will exit with an error. |
+| `mv dir1 dir2`        | 如果 *dir2* 不存在，则将 *dir1* 重命名为 *dir2*。如果 *dir2* 存在，则将目录 *dir1* 移动到目录 *dir2* 中。<br />If *dir2* does not exist, then *dir1* is renamed *dir2*. If *dir2* exists, the directory *dir1* is moved within directory *dir2*. |
 
 ## rm
 
@@ -161,11 +161,11 @@ Examples of `rm` and its options include:
 
 ​	`rm` 和其选项的示例包括：
 
-| **命令 Command**      | **结果 Results**                                             |
-| :-------------------- | :----------------------------------------------------------- |
-| `rm *file1 file2*`    | 删除 *file1* 和 *file2*。<br />Delete *file1* and *file2*.   |
-| `rm -i *file1 file2*` | 与上面相同，然而，由于指定了 "-i"（交互式）选项，每个文件被删除之前会提示用户。<br />Like above however, since the "-i" (interactive) option is specified, the user is prompted before each file is deleted. |
-| `rm -r *dir1 dir2*`   | 删除目录 *dir1* 和 *dir2* 及其所有内容。<br />Directories *dir1* and *dir2* are deleted along with all of their contents. |
+| **命令 Command**    | **结果 Results**                                             |
+| :------------------ | :----------------------------------------------------------- |
+| `rm file1 file2`    | 删除 *file1* 和 *file2*。<br />Delete *file1* and *file2*.   |
+| `rm -i file1 file2` | 与上面相同，然而，由于指定了 "-i"（交互式）选项，每个文件被删除之前会提示用户。<br />Like above however, since the "-i" (interactive) option is specified, the user is prompted before each file is deleted. |
+| `rm -r dir1 dir2`   | 删除目录 *dir1* 和 *dir2* 及其所有内容。<br />Directories *dir1* and *dir2* are deleted along with all of their contents. |
 
 ## 在使用 rm 时要小心！ Be careful with rm!
 

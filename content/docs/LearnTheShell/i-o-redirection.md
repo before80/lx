@@ -18,9 +18,9 @@ In this lesson, we will explore a powerful feature used by command line programs
 
 ## 标准输出 Standard Output
 
-Most command line programs that display their results do so by sending their results to a facility called *standard output*. By default, standard output directs its contents to the display. To redirect standard output to a file, the ">" character is used like this:
+Most command line programs that display their results do so by sending their results to a facility called *standard output*. By default, standard output directs its contents to the display. To redirect standard output to a file, the "`>`" character is used like this:
 
-​	大多数命令行程序将它们的结果显示出来是通过将结果发送到一个称为*标准输出*的设备。默认情况下，标准输出将其内容定向到显示器上。要将标准输出重定向到文件，可以使用 ">" 符号，像这样：
+​	大多数命令行程序将它们的结果显示出来是通过将结果发送到一个称为*标准输出*的设备。默认情况下，标准输出将其内容定向到显示器上。要将标准输出重定向到文件，可以使用 "`>`" 符号，像这样：
 
 ```bash
 [me@linuxbox me]$ ls > file_list.txt
@@ -30,9 +30,9 @@ In this example, the `ls` command is executed and the results are written in a f
 
 ​	在这个例子中，执行了 `ls` 命令，并将结果写入名为 `file_list.txt` 的文件中。由于 `ls` 的输出被重定向到文件，所以在显示器上没有显示任何结果。
 
-Each time the command above is repeated, `file_list.txt` is overwritten from the beginning with the output of the command `ls`. To have the new results *appended* to the file instead, we use ">>" like this:
+Each time the command above is repeated, `file_list.txt` is overwritten from the beginning with the output of the command `ls`. To have the new results *appended* to the file instead, we use "`>>`" like this:
 
-​	每次重复执行上述命令时，`file_list.txt` 将被从头开始覆盖为 `ls` 命令的输出。如果要将新结果*追加*到文件而不是覆盖，可以使用 ">>"，像这样：
+​	每次重复执行上述命令时，`file_list.txt` 将被从头开始覆盖为 `ls` 命令的输出。如果要将新结果*追加*到文件而不是覆盖，可以使用 "`>>`"，像这样：
 
 ```bash
 [me@linuxbox me]$ls >> file_list.txt
@@ -44,9 +44,9 @@ When the results are appended, the new results are added to the end of the file,
 
 ## 标准输入 Standard Input
 
-Many commands can accept input from a facility called *standard input*. By default, standard input gets its contents from the keyboard, but like standard output, it can be redirected. To redirect standard input from a file instead of the keyboard, the "<" character is used like this:
+Many commands can accept input from a facility called *standard input*. By default, standard input gets its contents from the keyboard, but like standard output, it can be redirected. To redirect standard input from a file instead of the keyboard, the "`<`" character is used like this:
 
-​	许多命令可以从一个称为*标准输入*的设备接受输入。默认情况下，标准输入从键盘获取内容，但是像标准输出一样，它也可以被重定向。要将标准输入从文件而不是键盘重定向，可以使用 "<" 符号，像这样：
+​	许多命令可以从一个称为*标准输入*的设备接受输入。默认情况下，标准输入从键盘获取内容，但是像标准输出一样，它也可以被重定向。要将标准输入从文件而不是键盘重定向，可以使用 "`<`" 符号，像这样：
 
 ```bash
 [me@linuxbox me]$ sort < file_list.txt
@@ -60,7 +60,7 @@ In the example above, we used the `sort` command to process the contents of `fil
 [me@linuxbox me]$ sort < file_list.txt > sorted_file_list.txt
 ```
 
-As we can see, a command can have both its input and output redirected. Be aware that the order of the redirection does not matter. The only requirement is that the redirection operators (the "<" and ">") must appear after the other options and arguments in the command.
+As we can see, a command can have both its input and output redirected. Be aware that the order of the redirection does not matter. The only requirement is that the redirection operators (the "`<`" and "`>`") must appear after the other options and arguments in the command.
 
 ​	如我们所见，一个命令可以同时重定向其输入和输出。需要注意的是，重定向的顺序不重要。唯一的要求是重定向操作符（"`<`" 和 "`>`"）必须出现在命令中其他选项和参数之后。
 
@@ -82,11 +82,11 @@ By connecting commands together, we can accomplish amazing feats. Here are some 
 
 ​	通过将命令连接在一起，我们可以完成令人惊奇的任务。以下是一些可以尝试的例子：
 
-| **命令 Command**                | **What it does**                                             |
-| :------------------------------ | :----------------------------------------------------------- |
-| `ls -lt | head`                 | 显示当前目录中最新的10个文件。<br />Displays the 10 newest files in the current directory. |
-| `du | sort -nr`                 | 显示一个目录列表，以及它们所占用的空间大小，从最大到最小排序。<br />Displays a list of directories and how much space they consume, sorted from the largest to the smallest. |
-| `find . -type f -print | wc -l` | 显示当前工作目录及其所有子目录中的文件总数。<br />Displays the total number of files in the current working directory and all of its subdirectories. |
+| **命令 Command**                 | **What it does**                                             |
+| :------------------------------- | :----------------------------------------------------------- |
+| `ls -lt \| head`                 | 显示当前目录中最新的10个文件。<br />Displays the 10 newest files in the current directory. |
+| `du \| sort -nr`                 | 显示一个目录列表，以及它们所占用的空间大小，从最大到最小排序。<br />Displays a list of directories and how much space they consume, sorted from the largest to the smallest. |
+| `find . -type f -print \| wc -l` | 显示当前工作目录及其所有子目录中的文件总数。<br />Displays the total number of files in the current working directory and all of its subdirectories. |
 
 ## 过滤器 Filters
 
@@ -113,7 +113,7 @@ One kind of program frequently used in pipelines is called a *filter*. Filters t
 
 2. **从命令行打印。** Linux提供了一个名为`lpr`的程序，可以接受标准输入并将其发送到打印机。它经常与管道和过滤器一起使用。以下是一些示例：
 
-   ```
+   ```bash
    cat poorly_formatted_report.txt | fmt | pr | lpr
    
    cat unsorted_list_with_dupes.txt | sort | uniq | pr | lpr
@@ -131,7 +131,7 @@ One kind of program frequently used in pipelines is called a *filter*. Filters t
 
 4. **查看tar文件的内容** 经常会看到软件以*gzipped tar文件*的形式分发。这是一个传统的Unix风格的磁带归档文件（使用`tar`创建），经过`gzip`压缩。你可以通过文件的传统扩展名".tar.gz"或".tgz"来识别这些文件。你可以使用以下命令在Linux系统上查看此类文件的目录：
 
-   ```
+   ```bash
    tar tzvf name_of_file.tar.gz | less
    ```
 
