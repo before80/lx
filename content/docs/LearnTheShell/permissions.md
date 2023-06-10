@@ -186,7 +186,7 @@ root@linuxbox:~#
 
 
 
-## 更改文件所有者和组 Changing File Ownership
+## 更改文件所有者 Changing File Ownership
 
 We can change the owner of a file by using the `chown` command. Here's an example: Suppose we wanted to change the owner of `some_file` from "me" to "you". We could:
 
@@ -204,11 +204,11 @@ Notice that in order to change the owner of a file, we must have superuser privi
 
 ​	`chown`命令对目录的操作方式与对文件的操作方式相同。
 
-## 更改组所有权 Changing Group Ownership
+## 更改所属组 Changing Group Ownership
 
 The group ownership of a file or directory may be changed with `chgrp`. This command is used like this:
 
-​	可以使用`chgrp`命令来更改文件或目录的组所有者。命令的使用方法如下：
+​	可以使用`chgrp`命令来更改文件或目录的所属组。命令的使用方法如下：
 
 ```bash
 [me@linuxbox me]$ chgrp new_group some_file
@@ -216,7 +216,7 @@ The group ownership of a file or directory may be changed with `chgrp`. This com
 
 In the example above, we changed the group ownership of `some_file` from its previous group to "new_group". We must be the owner of the file or directory to perform a `chgrp`.
 
-​	在上面的示例中，我们将`some_file`的组所有者从原来的组更改为"new_group"。执行`chgrp`命令时，我们必须是文件或目录的所有者。
+​	在上面的示例中，我们将`some_file`的所属组从原来的组更改为"new_group"。执行`chgrp`命令时，我们必须是文件或目录的所有者。
 
 ## 进一步阅读 Further Reading
 

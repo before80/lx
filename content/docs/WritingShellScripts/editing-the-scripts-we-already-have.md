@@ -22,7 +22,7 @@ In this lesson, we will look at a couple of these scripts and learn a few import
 
 During our shell session, the system is holding a number of facts about the world in its memory. This information is called the *environment*. The environment contains such things as our path, our user name, and much more. We can examine a complete list of what is in the environment with the `set` command.
 
-​	在我们的 shell 会话期间，系统会在内存中保存关于世界的一些事实。这些信息被称为*环境*。环境包含诸如路径、用户名等等。我们可以使用 `set` 命令查看环境中的完整列表。
+​	在我们的 shell 会话期间，系统会在内存中保存关于该世界的一些事实。这些信息被称为*环境*。环境包含诸如路径、用户名等等。我们可以使用 `set` 命令查看环境中的完整列表。
 
 Two types of commands are often contained in the environment. They are *aliases* and *shell functions*.
 
@@ -64,7 +64,7 @@ Take a look at your system and see which of these startup files you have. Rememb
 
 The `~/.bashrc` file is probably the most important startup file from the ordinary user’s point of view, since it is almost always read. Non-login shells read it by default and most startup files for login shells are written in such a way as to read the `~/.bashrc` file as well.
 
-​	`.bashrc` 文件可能是普通用户来说最重要的启动文件，因为它几乎总是会被读取。非登录 shell 会话默认读取它，而大多数登录 shell 的启动文件也以这种方式编写，以便读取 `.bashrc` 文件。
+​	`~/.bashrc` 文件可能是普通用户来说最重要的启动文件，因为它几乎总是会被读取。非登录 shell 会话默认读取它，而大多数登录 shell 的启动文件也以这种方式编写，以便读取 `~/.bashrc` 文件。
 
 If we take a look inside a typical `.bash_profile` (this one taken from a CentOS system), it looks something like this:
 
@@ -72,8 +72,7 @@ If we take a look inside a typical `.bash_profile` (this one taken from a CentOS
 
 ```bash
 # .bash_profile
-# Get the aliases and functions
-# 获取别名和函数
+# Get the aliases and functions 获取别名和函数 
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
@@ -84,9 +83,9 @@ PATH=$PATH:$HOME/bin
 export PATH
 ```
 
-Lines that begin with a “#” are comments and are not read by the shell. These are there for human readability. The first interesting thing occurs on the fourth line, with the following code:
+Lines that begin with a “`#`” are comments and are not read by the shell. These are there for human readability. The first interesting thing occurs on the fourth line, with the following code:
 
-​	以“#”开头的行是注释，不会被 shell 读取。这些注释是为了人类可读性。有趣的事情发生在第四行，具有以下代码：
+​	以“`#`”开头的行是注释，不会被 shell 读取。这些注释是为了人类可读性。有趣的事情发生在第四行，具有以下代码：
 
 ```bash
 if [ -f ~/.bashrc ]; then

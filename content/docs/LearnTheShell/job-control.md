@@ -67,7 +67,7 @@ In this case, the prompt returned because the process was put in the background.
 
 Now imagine that we forgot to use the "&" symbol to put the program into the background. There is still hope. We can type `Ctrl-z` and the process will be suspended. We can verify this by seeing that the program's window is frozen. The process still exists, but is idle. To resume the process in the background, type the `bg` command (short for background). Here is an example:
 
-​	现在想象一下，我们忘记使用"&"符号将程序放入后台。还有希望。我们可以输入`Ctrl-z`，进程将被挂起。我们可以通过查看程序的窗口是否被冻结来验证这一点。进程仍然存在，但是处于空闲状态。要在后台恢复该进程，请键入`bg`命令（缩写为background）。以下是一个例子：
+​	现在想象一下，我们忘记使用"&"符号将程序放入后台。还有希望。我们可以输入`Ctrl-z`，该进程将被挂起。我们可以通过查看程序的窗口是否被冻结来验证这一点。该进程仍然存在，但是处于空闲状态。要在后台恢复该进程，请键入`bg`命令（缩写为background）。以下是一个例子：
 
 ```bash
 [me@linuxbox me]$ xload
@@ -137,7 +137,7 @@ PID  TTY   TIME     CMD
 
 While the `kill` command is used to "kill" processes, its real purpose is to send *signals* to processes. Most of the time the signal is intended to tell the process to go away, but there is more to it than that. Programs (if they are properly written) listen for signals from the operating system and respond to them, most often to allow some graceful method of terminating. For example, a text editor might listen for any signal that indicates that the user is logging off, or that the computer is shutting down. When it receives this signal, it could save the work in progress before it exits. The `kill` command can send a variety of signals to processes. Typing:
 
-​	尽管`kill`命令用于"终止"进程，但它的真正目的是向进程发送*信号*。大多数时候，这个信号是告诉进程离开，但其中还有更多内容。程序（如果它们编写正确）会监听来自操作系统的信号并对其作出响应，通常是为了允许一些优雅的终止方法。例如，文本编辑器可能会监听任何指示用户注销或计算机关闭的信号。当它收到这个信号时，它可以在退出之前保存正在进行的工作。`kill`命令可以向进程发送各种信号。键入：
+​	尽管`kill`命令用于"终止"进程，但它的真正目的是向进程们发送*信号*。大多数时候，这个信号是告诉进程离开，但其中还有更多内容。程序（如果它们编写正确）会监听来自操作系统的信号并对其作出响应，通常是为了允许一些优雅的终止方法。例如，文本编辑器可能会监听任何指示用户注销或计算机关闭的信号。当它收到这个信号时，它可以在退出之前保存正在进行的工作。`kill`命令可以向进程们发送各种信号。键入：
 
 ```bash
 kill -l
@@ -149,7 +149,7 @@ will print a list of the signals it supports. Many are rather obscure, but sever
 
 | **信号 Signal #** | **名称 Name** | **描述 Description**                                         |
 | ----------------- | ------------- | ------------------------------------------------------------ |
-| **1**             | **SIGHUP**    | 挂断信号。程序可以监听此信号并对其作出响应。在关闭终端时，该信号会发送给在终端上运行的进程。<br />Hang up signal. Programs can listen for this signal and act upon it. This signal is sent to processes running in a terminal when you close the terminal. |
+| **1**             | **SIGHUP**    | 挂起信号。程序可以监听此信号并对其作出响应。在关闭终端时，该信号会发送给在终端上运行的进程。<br />Hang up signal. Programs can listen for this signal and act upon it. This signal is sent to processes running in a terminal when you close the terminal. |
 | **2**             | **SIGINT**    | 中断信号。该信号用于中断进程。程序可以处理此信号并对其作出响应。我们还可以通过在运行程序的终端窗口中键入`Ctrl-c`来直接发送此信号。<br />Interrupt signal. This signal is given to processes to interrupt them. Programs can process this signal and act upon it. We can also issue this signal directly by typing `Ctrl-c` in the terminal window where the program is running. |
 | **15**            | **SIGTERM**   | 终止信号。该信号用于终止进程。同样，程序可以处理此信号并对其作出响应。这是如果没有指定信号，默认由`kill`命令发送的信号。<br />Termination signal. This signal is given to processes to terminate them. Again, programs can process this signal and act upon it. This is the default signal sent by the `kill` command if no signal is specified. |
 | **9**             | **SIGKILL**   | 杀死信号。该信号导致Linux内核立即终止进程。程序无法监听此信号。<br />Kill signal. This signal causes the immediate termination of the process by the Linux kernel. Programs cannot listen for this signal. |

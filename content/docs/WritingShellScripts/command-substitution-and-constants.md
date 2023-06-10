@@ -51,17 +51,17 @@ As we can see, another environment variable, `USER`, is used to get the user nam
 $(date +"%x %r %Z")
 ```
 
-The characters "$( )" tell the shell, "substitute the results of the enclosed command," a technique known as *command substitution*. In our script, we want the shell to insert the results of the command `date +"%x %r %Z"` which outputs the current date and time. The `date` command has many features and formatting options. To look at them all, try this:
+The characters "`$( )`" tell the shell, "substitute the results of the enclosed command," a technique known as *command substitution*. In our script, we want the shell to insert the results of the command `date +"%x %r %Z"` which outputs the current date and time. The `date` command has many features and formatting options. To look at them all, try this:
 
-​	字符 "$( )" 告诉 shell，“替换封闭命令的结果”，这是一种称为*命令替换*的技术。在我们的脚本中，我们希望 shell 插入命令 `date +"%x %r %Z"` 的结果，该命令输出当前日期和时间。`date` 命令有许多功能和格式选项。要查看所有选项，请尝试执行以下命令：
+​	字符 "`$( )`" 告诉 shell，“替换封闭命令的结果”，这是一种称为*命令替换*的技术。在我们的脚本中，我们希望 shell 插入命令 `date +"%x %r %Z"` 的结果，该命令输出当前日期和时间。`date` 命令有许多功能和格式选项。要查看所有选项，请尝试执行以下命令：
 
 ```bash
 [me@linuxbox me]$ date --help | less
 ```
 
-Be aware that there is an older, alternate syntax for "$(command)" that uses the backtick character " ` ". This older form is compatible with the original Bourne shell (`sh`) but its use is discouraged in favor of the modern syntax. The bash shell fully supports scripts written for `sh`, so the following forms are equivalent:
+Be aware that there is an older, alternate syntax for "`$(command)`" that uses the backtick character " \` ". This older form is compatible with the original Bourne shell (`sh`) but its use is discouraged in favor of the modern syntax. The bash shell fully supports scripts written for `sh`, so the following forms are equivalent:
 
-​	请注意，有一种较旧的，替代 "$(command)" 语法，它使用反引号字符 " `"。这种较旧的形式与原始 Bourne shell (`sh`) 兼容，但建议使用现代语法而不是它。Bash shell 完全支持为 `sh` 编写的脚本，因此以下形式是等价的：
+​	请注意，有一种较旧的，替代 "`$(command)`" 语法，它使用反引号字符 " \`"。这种较旧的形式与原始 Bourne shell (`sh`) 兼容，但建议使用现代语法而不是它。Bash shell 完全支持为 `sh` 编写的脚本，因此以下形式是等价的：
 
 ```bash
 $(command)

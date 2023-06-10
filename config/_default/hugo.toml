@@ -88,6 +88,7 @@ ordered = false
 # See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html
 style = "onedark"
 linenos = true
+
 #noClasses = true
 #lineNumbersInTable = true
 # Uncomment if you want your chosen highlight style used for code blocks without a specified language

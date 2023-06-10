@@ -31,7 +31,7 @@ A shell script is a file that contains ASCII text. To create a shell script, we 
 
 | 名称 Name | 描述 Description                                             | 界面 Interface           |
 | :-------- | :----------------------------------------------------------- | :----------------------- |
-| `vi, vim` | nix 文本编辑器的鼻祖 `vi` 以其晦涩难懂的用户界面而闻名。好处是，`vi` 强大、轻巧且快速。学习 `vi` 是 Unix 系统使用的基本技能，因为它在类 Unix 系统上通用。在大多数 Linux 发行版中，`vi` 的增强版本称为 `vim`，取代了 vi。`vim` 是一款出色的编辑器，值得花时间学习它。<br />The granddaddy of Unix text editors, `vi`, is infamous for its obtuse user interface. On the bright side, `vi` is powerful, lightweight, and fast. Learning `vi` is a Unix rite of passage, since it is universally available on Unix-like systems. On most Linux distributions, an enhanced version of `vi` called `vim` is provided in place of vi. `vim` is a remarkable editor and well worth taking the time to learn it. | 命令行<br />command line |
+| `vi, vim` | Unix 文本编辑器的鼻祖 `vi` 以其晦涩难懂的用户界面而闻名。好处是，`vi` 强大、轻巧且快速。学习 `vi` 是 Unix 系统使用的基本技能，因为它在类 Unix 系统上通用。在大多数 Linux 发行版中，`vi` 的增强版本称为 `vim`，取代了 vi。`vim` 是一款出色的编辑器，值得花时间学习它。<br />The granddaddy of Unix text editors, `vi`, is infamous for its obtuse user interface. On the bright side, `vi` is powerful, lightweight, and fast. Learning `vi` is a Unix rite of passage, since it is universally available on Unix-like systems. On most Linux distributions, an enhanced version of `vi` called `vim` is provided in place of vi. `vim` is a remarkable editor and well worth taking the time to learn it. | 命令行<br />command line |
 | `Emacs`   | 文本编辑器领域的真正巨头是 Emacs，最初由[Richard Stallman](https://en.wikipedia.org/wiki/Richard_Stallman)编写。Emacs 包含（或可以包含）为文本编辑器构想的所有功能。值得注意的是，`vi` 和 Emacs 的拥护者之间存在激烈的宗教战争，争论哪个更好。<br />The true giant in the world of text editors is Emacs originally written by [Richard Stallman](https://en.wikipedia.org/wiki/Richard_Stallman). Emacs contains (or can be made to contain) every feature ever conceived of for a text editor. It should be noted that `vi` and Emacs fans fight bitter religious wars over which is better. | 命令行<br />command line |
 | `nano`    | `nano` 是 `pine` 邮件程序提供的文本编辑器的免费克隆版本。`nano` 非常易于使用，但与 `vim` 和 `emacs` 相比，功能较少。`nano` 推荐给需要命令行编辑器的初学者。<br />`nano` is a free clone of the text editor supplied with the `pine` email program. `nano` is very easy to use but is very short on features compared to `vim` and `emacs`. `nano` is recommended for first-time users who need a command line editor. | 命令行<br />command line |
 | `gedit`   | `gedit` 是 GNOME 桌面环境附带的编辑器。gedit 易于使用，并包含足够的功能作为初学者级别的编辑器。<br />`gedit` is the editor supplied with the GNOME desktop environment. gedit is easy to use and contains enough features to be a good beginners-level editor. | 图形界面<br />graphical  |
@@ -103,15 +103,15 @@ Well, that's correct. The shell does know. Here's how: the shell maintains a lis
 
 This list of directories is called our *path*. We can view the list of directories with the following command:
 
-​	这个目录列表被称为我们的*路径*。我们可以使用以下命令查看目录列表，其中 `$PATH` 是指定命令输入时将搜索的以冒号分隔的目录列表：
+​	这个目录列表被称为我们的*路径*。我们可以使用以下命令查看目录列表：
 
 ```bash
 [me@linuxbox me]$ echo $PATH
 ```
 
-This will return a colon separated list of directories that will be searched if a specific path name is not given when a command is entered. In our first attempt to execute our new script, we specified a pathname ("./") to the file.
+This will return a colon separated list of directories that will be searched if a specific path name is not given when a command is entered. In our first attempt to execute our new script, we specified a pathname ("`./`") to the file.
 
-​	这将返回一个以冒号分隔的目录列表，如果在输入命令时没有指定特定路径名，系统将在这些目录中进行搜索。在我们尝试执行新脚本时，我们指定了一个路径名（"./"）。
+​	这将返回一个以冒号分隔的目录列表，如果在输入命令时没有指定特定路径名，系统将在这些目录中进行搜索。在我们尝试执行新脚本时，我们指定了一个路径名（"`./`"）。
 
 We can add directories to our path with the following command, where *directory* is the name of the directory we want to add:
 

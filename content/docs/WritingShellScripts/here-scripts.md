@@ -126,7 +126,7 @@ _EOF_
 
 A here script (also sometimes called a here document) is an additional form of [I/O redirection](https://linuxcommand.org/lc3_lts0070.php). It provides a way to include content that will be given to the standard input of a command. In the case of the script above, the standard input of the `cat` command was given a stream of text from our script.
 
-​	here 脚本（有时也称为 here document）是一种附加的[输入/输出重定向](https://linuxcommand.org/lc3_lts0070.php)形式。它提供了一种将内容提供给命令的标准输入的方法。在上面的脚本中，`cat` 命令的标准输入接收了来自我们脚本的文本流。
+​	here 脚本（有时也称为 here document）是一种附加的[输入/输出重定向]({{< ref "/docs/LearnTheShell/i-o-redirection">}})形式。它提供了一种将内容提供给命令的标准输入的方法。在上面的脚本中，`cat` 命令的标准输入接收了来自我们脚本的文本流。
 
 A here script is constructed like this:
 
@@ -138,13 +138,13 @@ content to be used as command's standard input
 token
 ```
 
-*token* can be any string of characters. "_EOF_" (EOF is short for "End Of File") is traditional, but we can use anything as long as it does not conflict with a bash reserved word. The token that ends the here script must exactly match the one that starts it, or else the remainder of our script will be interpreted as more standard input to the command which can lead to some really exciting script failures.
+*token* can be any string of characters. "`_EOF_`" (EOF is short for "End Of File") is traditional, but we can use anything as long as it does not conflict with a bash reserved word. The token that ends the here script must exactly match the one that starts it, or else the remainder of our script will be interpreted as more standard input to the command which can lead to some really exciting script failures.
 
-​	*token* 可以是任意字符字符串。"*EOF*"（EOF 是 "End Of File" 的缩写）是传统用法，但我们可以使用任何字符串，只要它不与 bash 的保留词冲突即可。结束 here 文档的标记必须与开始的标记完全匹配，否则我们脚本的其余部分将被解释为更多的命令标准输入，这可能导致一些令人激动的脚本失败。
+​	*token* 可以是任意字符字符串。"`_EOF_`"（EOF 是 "End Of File" 的缩写）是传统用法，但我们可以使用任何字符串，只要它不与 bash 的保留词冲突即可。结束 here 文档的标记必须与开始的标记完全匹配，否则我们脚本的其余部分将被解释为更多的命令标准输入，这可能导致一些令人激动的脚本失败。
 
 There is one additional trick that can be used with a here script. Often, we might want to indent the content portion of the here script to improve the readability of the script. We can do this if we change the script as follows:
 
-​	还有一种可以与 here 文档一起使用的额外技巧。通常，我们可能希望对 here 文档的内容进行缩进，以提高脚本的可读性。如果我们将脚本更改如下所示，就可以实现这一点：
+​	还有一种可以与 here 脚本一起使用的额外技巧。通常，我们可能希望对 here 脚本的内容进行缩进，以提高脚本的可读性。如果我们将脚本更改如下所示，就可以实现这一点：
 
 ```bash
 #!/bin/bash
@@ -168,7 +168,7 @@ _EOF_
 
 Changing the "`<<`" to "`<<-`" causes bash to ignore the leading tabs (but not spaces) in the here script. The output from the cat command will not contain any of the leading tab characters. This technique is a bit problematic, as many text editors are configured (and desirably so) to use sequences of spaces rather than tab characters.
 
-​	将 "`<<`" 改为 "`<<-`"，会让 bash 忽略 here 文档中的前导制表符（但不包括空格）。`cat` 命令的输出将不包含任何前导制表符。这种技巧有些问题，因为许多文本编辑器被配置为（并且应该如此）使用一系列空格而不是制表符。
+​	将 "`<<`" 改为 "`<<-`"，会让 bash 忽略 here 脚本中的前导制表符（但不包括空格）。`cat` 命令的输出将不包含任何前导制表符。这种技巧有些问题，因为许多文本编辑器被配置为（并且应该如此）使用一系列空格而不是制表符。
 
 O.k., let's make our page. We will edit our page to get it to say something:
 

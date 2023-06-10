@@ -8,7 +8,7 @@ draft = false
 
 +++
 
-# Expansion
+# 扩展 Expansion 
 
 https://linuxcommand.org/lc3_lts0080.php
 
@@ -30,7 +30,7 @@ That's pretty straightforward. Any argument passed to `echo` gets displayed. Let
 Desktop Documents ls-output.txt Music Pictures Public Templates Videos
 ```
 
-So what just happened? Why didn't `echo` print "`*`"? As we recall from our work with wildcards, the "`*`"character means match any characters in a filename, but what we didn't see in our original discussion was how the shell does that. The simple answer is that the shell expands the "*" into something else (in this instance, the names of the files in the current working directory) before the `echo` command is executed. When the enter key is pressed, the shell automatically expands any qualifying characters on the command line before the command is carried out, so the `echo` command never saw the "`*`", only its expanded result. Knowing this, we can see that `echo` behaved as expected.
+So what just happened? Why didn't `echo` print "`*`"? As we recall from our work with wildcards, the "`*`"character means match any characters in a filename, but what we didn't see in our original discussion was how the shell does that. The simple answer is that the shell expands the "`*`" into something else (in this instance, the names of the files in the current working directory) before the `echo` command is executed. When the enter key is pressed, the shell automatically expands any qualifying characters on the command line before the command is carried out, so the `echo` command never saw the "`*`", only its expanded result. Knowing this, we can see that `echo` behaved as expected.
 
 ​	发生了什么？为什么`echo`没有打印出"`*`"？从我们之前使用通配符的工作中，我们记得"`*`"字符表示匹配文件名中的任意字符，但是我们在原始讨论中没有看到shell是如何实现的。简单的答案是，shell在执行`echo`命令之前将"`*`"扩展为其他内容（在这种情况下是当前工作目录中文件的名称）。当按下回车键时，shell会自动在执行命令之前展开命令行上的任何限定字符，因此`echo`命令从未看到"`*`"，只看到其扩展后的结果。了解这一点，我们可以看到`echo`的行为符合预期。
 
@@ -337,7 +337,7 @@ In the first example, word-splitting by the shell removed extra whitespace from 
 
 The first type of quoting we will look at is double quotes. If we place text inside double quotes, all the special characters used by the shell lose their special meaning and are treated as ordinary characters. The exceptions are "`$`", "`\`" (backslash), and "\`" (back- quote). This means that word-splitting, pathname expansion, tilde expansion, and brace expansion are suppressed, but parameter expansion, arithmetic expansion, and command substitution are still carried out. Using double quotes, we can cope with filenames containing embedded spaces. Imagine we were the unfortunate victim of a file called `two words.txt`. If we tried to use this on the command line, word-splitting would cause this to be treated as two separate arguments rather than the desired single argument:
 
-​	我们将首先看一下的引号类型是双引号。如果我们将文本放在双引号内，Shell 中使用的所有特殊字符都失去了它们的特殊含义，被视为普通字符。例外的是 "`$`"、"\`\`"（反斜杠）和 "\`"（反引号）。这意味着词分割、路径名扩展、波浪线扩展和大括号扩展被抑制，但参数扩展、算术扩展和命令替换仍然会进行。使用双引号，我们可以处理包含空格的文件名。假设我们是一个不幸的`two words.txt`文件的受害者。如果我们尝试在命令行上使用它，词分割将使其被视为两个独立的参数，而不是所需的单个参数：
+​	我们将首先看一下的引号类型是双引号。如果我们将文本放在双引号内，Shell 中使用的所有特殊字符都失去了它们的特殊含义，被视为普通字符。例外的是 "`$`"、"`\`"（反斜杠）和 "\`"（反引号）。这意味着词分割、路径名扩展、波浪线扩展和大括号扩展被抑制，但参数扩展、算术扩展和命令替换仍然会进行。使用双引号，我们可以处理包含空格的文件名。假设我们是一个不幸的`two words.txt`文件的受害者。如果我们尝试在命令行上使用它，词分割将使其被视为两个独立的参数，而不是所需的单个参数：
 
 ```bash
 [me@linuxbox me]$ ls -l two words.txt
