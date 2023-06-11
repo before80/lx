@@ -64,7 +64,7 @@ where “command” is the name of the command we want to examine. Here are some
 [me@linuxbox me]$ type type
 type is a shell builtin
 [me@linuxbox me]$ type ls
-s is aliased to `ls --color=auto'
+s is aliased to `ls --color=auto`
 [me@linuxbox me]$ type cp
 cp is /bin/cp
 ```
