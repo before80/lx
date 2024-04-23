@@ -46,7 +46,7 @@ anchor = "smart"
 
 # Language configuration
 
-# [languages]
+#[languages]
 # [languages.cn]
 # title = "demo1"
 # description = "A demo example site"
@@ -86,12 +86,10 @@ endLevel = 6
 ordered = false
 [markup.highlight]
 # See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html
-#style = "onedark"
-#style = "catppuccin-macchiato"
-#style = "base16-snazzy"
-style = "autumn"
-linenos = true
-
+# style = "onedark"
+# style = "manni"
+style = "igor"
+linenos = false
 #noClasses = true
 #lineNumbersInTable = true
 # Uncomment if you want your chosen highlight style used for code blocks without a specified language
@@ -155,6 +153,8 @@ prism_syntax_highlighting = false
 [params.markmap]
 enable = true
 
+
+
 # 启用 tocbot来处理页面滚动定位toc项
 [params.jstoc]
 enable = true
@@ -184,7 +184,8 @@ pygmentsStyle = "tango"
 #  Set to true to disable breadcrumb navigation.
 breadcrumb_disable = false
 # Set to true to disable the About link in the site footer
-footer_about_disable = false
+#footer_about_disable = false
+footer_about_enable = true
 # Set to false if you don't want to display a logo (/assets/icons/logo.svg) in the top navbar
 navbar_logo = true
 # Set to true if you don't want the top navbar to be translucent when over a `block/cover`, like on the homepage.
@@ -204,7 +205,7 @@ sidebar_search_disable = false
 # If you want this feature, but occasionally need to remove the "Feedback" section from a single page,
 # add "hide_feedback: true" to the page's front matter.
 [params.ui.feedback]
-enable = true
+enable = false
 # The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
 yes = 'Glad to hear it! Please <a href="https://github.com/before80/lx/issues/new">tell us how we can improve</a>.'
 no = 'Sorry to hear that. Please <a href="https://github.com/before80/lx/issues/new">tell us how we can improve</a>.'
@@ -251,7 +252,8 @@ desc = "Discuss development issues around the project"
 
 # Comment out if you don't want the "print entire section" link enabled.
 [outputs]
-section = ["HTML", "print", "RSS"]
+#section = ["HTML", "print", "RSS"]
+section = ["HTML", "RSS"]
 
 # hugo module configuration
 
