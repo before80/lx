@@ -83,6 +83,8 @@ root@主机名:路径#
 
 ### 与bash手册交互
 
+#### man
+
 方式1：通过`man`命令
 
 ​	`man`命令可以查看`非内置命令`、函数、配置文件的手册页。
@@ -186,6 +188,8 @@ WGET(1)                                                             GNU Wget    
 >
 > 
 
+#### info
+
 方式2：通过`info`命令，查看命令、函数、配置文件的手册信息
 
 > `man`命令和`info`命令的异同
@@ -206,6 +210,8 @@ WGET(1)                                                             GNU Wget    
 >    - `info` 文档则更具有扩展性，GNU 项目的软件通常提供更多的信息和更新，因此可能更适合查阅最新的文档。
 >
 > 总的来说，`man` 命令更适合快速查找和浏览基本的命令信息，而 `info` 命令则更适合深入学习和了解复杂的软件或工具。
+
+#### help
 
 方式3：通过`命令名 --help`或`help 命令名`获取指定命令的帮助文档
 
@@ -739,6 +745,8 @@ Linux                                            2020-06-09                     
 
 #### 遍历目录
 
+##### cd
+
 ​	`cd 目录路径`：将当前shell会话所在目录切换至指定目录。其中指定的目录路径可以使用`绝对路径（以/开头）`或`相对路径（以.或..或目录名开头）`。
 
 ​	`pwd`：获取当前shell会话所在目录。
@@ -746,6 +754,8 @@ Linux                                            2020-06-09                     
 ### 列出文件和目录
 
 #### 显示基本列表
+
+##### ls
 
 ​	`ls`：列出指定目录下的文件和目录（按字母排序，且按列排序）；
 
@@ -766,6 +776,8 @@ Linux                                            2020-06-09                     
 ​	`ls -i`：列出指定目录下目录名、文件名以及`inode编号`。
 
 #### 显示长列表
+
+##### ls -l
 
 ​	`ls -l`：以长列表的形式列出当前目录下的文件和目录。
 
@@ -915,6 +927,8 @@ drwxr-xr-x 2 lx lx  4096  4月  7 14:34 Videos
 
 #### 创建文件
 
+##### touch
+
 ​	用`touch`命令创建空文件，例如：
 
 ```cmd
@@ -934,6 +948,8 @@ hello.txt  main.go
 
 
 #### 复制文件
+
+##### cp
 
 ​	用`cp`命令来复制文件，例如：
 
@@ -1014,7 +1030,7 @@ total 4
 152790 lrwxrwxrwx 1 lx lx  9  4月 24 22:16 slink_hello.txt -> hello.txt
 ```
 
-​	可以发现符号链接文件和原始文件的inode编号、文件大小不一样，进一步说明两者是不同文件。
+​	可以发现符号链接文件与原始文件的inode编号、文件大小不一样，进一步说明两者是不同文件。
 
 ​	创建硬链接，原始文件也必须存在，用`ln 原始文件路径 新的硬链接文件存放路径`，例如：
 
@@ -1029,7 +1045,7 @@ total 8
 152793 -rw-rw-r-- 2 lx lx 12  4月 24 22:21 hlink_hello.txt
 ```
 
-​	可以发现硬链接问价和原始文件的inode编号、文件大小都一样，进一步说明两者是相同的文件。
+​	可以发现硬链接文件与原始文件的inode编号、文件大小都一样，进一步说明两者是相同的文件。
 
 > 注意
 >
@@ -1040,6 +1056,8 @@ total 8
 > ​	即：硬链接不能跨文件系统，而符号链接可以跨文件系统。
 
 #### 文件重命名
+
+##### mv
 
 ​	用`mv 原始文件路径 新文件路径`修改文件名或目录名、移动文件或目录。
 
@@ -1073,7 +1091,7 @@ total 4
 
 ​	（b）移动文件到指定目录下（并且修改文件名）
 
-```
+```cmd
 lx@lxm:~/testDir/test10$ ls -l
 total 0
 lx@lxm:~/testDir/test10$ ls -l ../test11
@@ -1092,9 +1110,9 @@ total 4
 -rw-rw-r-- 1 lx lx 6  4月 24 22:30 hello.txt
 ```
 
-​	（c）移动整个目录下的内容到指定目录下（指定目录已经存在的情况 -> 实际则会删除旧目录名，且将其其下的内容移至指定目录下）
+​	（c）移动整个目录下的内容到指定目录下（指定目录已经存在的情况 -> 实际则会删除旧目录名，且将其直接移至指定目录下）
 
-```
+```cmd
 lx@lxm:~/testDir$ ls -li test12/
 total 8
 152798 -rw-rw-r-- 1 lx lx  6  4月 24 22:51 hello.txt
@@ -1117,7 +1135,7 @@ lx@lxm:~/testDir$ tree ./test13/test12
 
 ​	（d） 移动整个目录下的内容到指定目录下（指定目录还不存在的情况 -> 实际则会删除旧目录名，且将其其下的内容移至指定目录下）
 
-```
+```cmd
 lx@lxm:~/testDir$ ls -l test14/
 total 8
 -rw-rw-r-- 1 lx lx  6  4月 24 22:57 hello.txt
@@ -1135,7 +1153,7 @@ total 8
 
 ​	使用`mv -i` 可以在新文件名已经存在，或复制的文件已经存在于指定目录中的情况下给出提示。
 
-​	新文件名已经存在的情况下，复制文件：
+​	新文件名已经存在的情况下，进行复制文件：
 
 ```cmd
 lx@lxm:~/testDir/test15$ ls -l
@@ -1150,9 +1168,9 @@ total 8
 -rw-rw-r-- 1 lx lx 12  4月 24 22:57 world.txt
 ```
 
-​	要复制的文件名已经存在于指定目录中的情况下，复制文件：
+​	要复制的文件名已经存在于指定目录中的情况下，进行复制文件：
 
-```
+```cmd
 lx@lxm:~/testDir$ ls -li test15/
 total 8
 152805 -rw-rw-r-- 1 lx lx 6  4月 24 23:19 hello.txt
@@ -1176,27 +1194,585 @@ total 0
 
 #### 删除文件
 
-​	
+##### rm
+
+​	用`rm 要删除的文件路径`来删除已有文件，例如：
+
+```cmd
+lx@lxm:~/testDir/t17$ ls -a
+.  ..  foo.go
+lx@lxm:~/testDir/t17$ rm foo.go
+lx@lxm:~/testDir/t17$ ls -a
+.  ..
+lx@lxm:~/testDir/t17$ 
+```
+
+​	用`rm -i 要删除的文件路径`可以在删除时得到提示，这也是推荐的好习惯，例如：
+
+```cmd
+lx@lxm:~/testDir$ ls -a t17/
+.  ..  foo.go
+lx@lxm:~/testDir$ rm -i ./t17/foo.go 
+rm: remove regular empty file './t17/foo.go'? y
+lx@lxm:~/testDir$ ls -a t17/
+.  ..
+```
+
+​	用`rm -f 要删除的文件路径`可以强制删除指定文件，`但千万小心，防止误删了文件`！例如：
+
+```cmd
+lx@lxm:~/testDir$ ls -a t17/
+.  ..  foo.go
+lx@lxm:~/testDir$ rm -f ./t17/foo.go 
+lx@lxm:~/testDir$ ls -a t17/
+.  ..
+```
+
+
 
 ### 管理目录
 
-#### 创建目录
+#### 创建目录 
+
+##### mkdir
+
+​	用`mkdir 要创建的目录路径`来创建空目录，例如：
+
+```cmd
+lx@lxm:~/testDir$ mkdir t18
+lx@lxm:~/testDir$ ls -l t18
+total 0
+lx@lxm:~/testDir$ ls -dl t18
+drwxrwxr-x 2 lx lx 4096  4月 25 09:25 t18
+```
+
+​	用`mkdir -p 要创建的目录路径`来批量创建目录和子目录，例如：
+
+```cmd
+lx@lxm:~/testDir$ ls -dl t19
+ls: cannot access 't19': No such file or directory
+lx@lxm:~/testDir$ mkdir -p t19/t1901/t19001
+lx@lxm:~/testDir$ tree t19
+t19
+└── t1901
+    └── t19001
+
+2 directories, 0 files
+```
+
+
 
 #### 删除目录
+
+##### rmdir
+
+​	用`rmdir 要删除的空目录路径`来删除指定空目录，例如：
+
+```cmd
+lx@lxm:~/testDir$ ls -l t20
+total 0
+lx@lxm:~/testDir$ rmdir t20
+lx@lxm:~/testDir$ ls -l t20
+ls: cannot access 't20': No such file or directory
+```
+
+##### rm
+
+​	用`rm -r 要删除的目录路径`或`rm -R 要删除的目录路径`来向下进入指定目录删除其其中的内容和目录，例如：
+
+```cmd
+lx@lxm:~/testDir$ ls t21
+bar.go  foo.go
+lx@lxm:~/testDir$ rm -r t21
+lx@lxm:~/testDir$ ls t21
+ls: cannot access 't21': No such file or directory
+```
+
+​	用`rm -ir 要删除的目录路径`或`rm -iR 要删除的目录路径`来向下进入指定目录删除其其中的内容和目录，但删除前给出提示，例如：
+
+```cmd
+lx@lxm:~/testDir$ ls t22
+bar.go  foo.go
+lx@lxm:~/testDir$ rm -ir t22
+rm: descend into directory 't22'? y
+rm: remove regular empty file 't22/bar.go'? y
+rm: remove regular empty file 't22/foo.go'? y
+rm: remove directory 't22'? y
+lx@lxm:~/testDir$ ls t22
+ls: cannot access 't22': No such file or directory
+
+lx@lxm:~/testDir$ ls t23
+bar.go  foo.go
+lx@lxm:~/testDir$ rm -iR t23
+rm: descend into directory 't23'? y
+rm: remove regular empty file 't23/bar.go'? y
+rm: remove regular empty file 't23/foo.go'? y
+rm: remove directory 't23'? y
+lx@lxm:~/testDir$ ls t23
+ls: cannot access 't23': No such file or directory
+```
+
+
 
 ### 查看文件内容
 
 #### 查看文件类型
 
+##### file
+
+​	用`file 文件或目录路径`来查看指定文件的类型，例如：
+
+```cmd
+152812 -rw-rw-r-- 1 lx lx   51  4月 25 09:46 bar.sh
+152811 -rw-rw-r-- 2 lx lx   73  4月 25 09:44 foo.go
+152811 -rw-rw-r-- 2 lx lx   73  4月 25 09:44 hlink_foo.go
+152810 lrwxrwxrwx 1 lx lx   10  4月 25 09:47 slink_foo.go -> t24/foo.go
+152815 drwxrwxr-x 2 lx lx 4096  4月 25 09:47 t2401
+lx@lxm:~/testDir/t24$ file bar.sh
+bar.sh: Bourne-Again shell script, ASCII text executable
+lx@lxm:~/testDir/t24$ file foo.go 
+foo.go: C source, ASCII text
+lx@lxm:~/testDir/t24$ file hlink_foo.go 
+hlink_foo.go: C source, ASCII text
+lx@lxm:~/testDir/t24$ file slink_foo.go 
+slink_foo.go: broken symbolic link to t24/foo.go
+lx@lxm:~/testDir/t24$ file t2401
+t2401: directory
+```
+
+
+
 #### 查看整个文件
 
+##### cat
+
+​	用`cat 文件路径`来查看文件中的内容，例如：
+
+```cmd
+lx@lxm:~/testDir/t25$ ls
+bar.sh  foo.go  hlink_foo.go  slink_foo.go  t2401
+lx@lxm:~/testDir/t25$ cat foo.go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello World!")
+}
+```
+
+​	用`cat -n 文件路径`来查看文件中的内容，并加上行号，例如：
+
+```cmd
+lx@lxm:~/testDir/t25$ cat -n foo.go
+     1	package main
+     2	
+     3	import "fmt"
+     4	
+     5	func main() {
+     6		fmt.Println("Hello World!")
+     7	}
+```
+
+##### more
+
+​	用`more 文件路径`来查看文件中的内容，但会按页进行展示，按`空格`键或`PgUp`、`PgDn`键进行翻页，按`Enter`键进行逐行查看，按`q`键退出查看。
+
+##### less
+
+​	用`less 文件路径`来查看文件中的内容，但会按页进行展示，按`空格`键或`PgUp`、`PgDn`键进行翻页，按`Enter`键进行逐行查看，按`q`键退出查看，同时还可以使用上下箭头进行逐行查看，以及进行高级搜索（输入`/要搜索的内容`，再按`Enter`进行搜索，按`n`键跳至下一匹配项所在行，按`N（即Shift + n）`跳至上一匹配项所在行，按`p`键）。
+
+
+
 #### 查看部分文件
+
+##### tail
+
+​	用`tail 文件路径`来查看部分文件内容，默认显示文件最后10行，例如：
+
+```cmd
+xxxxxxxxxx136 1lx@lxm:~/testDir/t26$ cat foo.txt 2line 13line 24line 35line 46line 57line 68line 79line 810line 911line 1012line 1113line 1214line 1315line 1416line 1517line 1618line 1719line 1820line 1921line 2022line 2123line 2224line 2325lx@lxm:~/testDir/t26$ tail foo.txt 26line 1427line 1528line 1629line 1730line 1831line 1932line 2033line 2134line 2235line 23	
+```
+
+​	用`tail -n 正整数 文件路径`或 `tail -正整数 文件路径`来查看部分文件内容，显示文件最后`正整数`行，例如：
+
+```cmd
+lx@lxm:~/testDir/t26$ tail -n 5 foo.txt 
+line 19
+line 20
+line 21
+line 22
+line 23
+lx@lxm:~/testDir/t26$ tail -5 foo.txt 
+line 19
+line 20
+line 21
+line 22
+line 23
+```
+
+​	用`tail -f 文件路径`来实时追踪查看部分文件内容，显示文件最后几行，例如：
+
+​	先在一个命令行窗口中使用`tail -f foo.txt`，然后在另个命令行窗口中往`foo.txt`文件追加几行内容：
+
+![tail-f](./book_img/tail-f.gif)
+
+##### head
+
+​	用`head 文件路径`来查看部分文件内容，默认显示文件开头10行，例如：
+
+```cmd
+lx@lxm:~/testDir/t26$ head foo.txt
+line 1
+line 2
+line 3
+line 4
+line 5
+line 6
+line 7
+line 8
+line 9
+line 10
+```
+
+​	用`head -n 正整数 文件路径`或 `head -正整数 文件路径`来查看部分文件内容，显示文件开头`正整数`行，例如：
+
+```cmd
+lx@lxm:~/testDir/t26$ head -n 5 foo.txt
+line 1
+line 2
+line 3
+line 4
+line 5
+lx@lxm:~/testDir/t26$ head -5 foo.txt
+line 1
+line 2
+line 3
+line 4
+line 5
+```
 
 
 
 ## 更多的bash shell 命令
 
+### 监测程序
 
+#### 探查进程
+
+##### ps
+
+​	`ps`命令默认只显示运行在当前终端中属于当前用户的进程，例如：
+
+```cmd
+lx@lxm:~$ ps
+    PID TTY          TIME CMD
+   2058 pts/0    00:00:00 bash
+   3022 pts/0    00:00:00 ps
+```
+
+​	其中PID表示进程ID（process ID，PID），TTY表示该进程运行所在的终端，TIME表示该进程占用的CPU时间，CMD表示启动该进程的程序名称或命令。
+
+###### Unix风格
+
+​	`ps -l`命令，（`-l`选项，显示长列表）也是默认只显示运行在当前终端中属于当前用户的进程，但会比直接使用`ps`命令多显示几列，例如：
+
+```cmd
+lx@lxm:~$ ps -l
+F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  1000    2058    2057  0  80   0 -  3656 do_wai pts/0    00:00:00 bash
+0 R  1000    3445    2058  0  80   0 -  3941 -      pts/0    00:00:00 ps
+```
+
+​	其中
+
+- F：表示内核分配给该进程的系统标志
+
+- S：表示该进程的状态，有以下几种形式：
+
+  O：代表正在运行；
+
+  S：代表在休眠；
+
+  R：代表可运行，正等待运行；
+
+  Z：代表僵化，已终止但找不到其父进程；
+
+  T：代表停止。
+  
+- UID：表示启动该进程的用户ID
+
+- PID：表示该进程ID
+
+- PPID：表示该进程的父进程ID
+
+- C：表示该进程生命期中的CPU利用率
+
+- PRI：Priority，表示该进程的优先级（数字越大，优先级越低）
+
+- NI：Nice Value，表示该进程的谦让度，用于决定优先级
+
+- ADDR：Address，表示该进程的内存地址
+
+- SZ：Size，表示该进程被换出时所需交换空间的大致大小
+
+- WCHAN：Wait Channel，该进程休眠的内核函数地址
+
+- TTY：Teletype，表示该进程运行所在的终端
+
+- TIME：表示该进程累计占用的CPU时间
+
+- CMD：表示启动该进程的程序名称或命令
+
+​	`ps -ef`命令，（`-e`选项，用于显示所有进程；`-f`选项，用于显示完整格式的输出，有点矛盾，因为`-F`选项比`-f`选项显示更多列）显示系统中运行的所有进程，例如：
+
+```cmd
+lx@lxm:~$ ps -ef | head -10
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 08:59 ?        00:00:03 /sbin/init splash
+root           2       0  0 08:59 ?        00:00:00 [kthreadd]
+root           3       2  0 08:59 ?        00:00:00 [rcu_gp]
+root           4       2  0 08:59 ?        00:00:00 [rcu_par_gp]
+root           5       2  0 08:59 ?        00:00:00 [slub_flushwq]
+root           6       2  0 08:59 ?        00:00:00 [netns]
+root           8       2  0 08:59 ?        00:00:00 [kworker/0:0H-events_highpri]
+root           9       2  0 08:59 ?        00:00:05 [kworker/0:1-events]
+root          11       2  0 08:59 ?        00:00:00 [mm_percpu_wq]
+```
+
+  	其中，
+
+- STIME：Start Time，该进程启动时的系统时间
+
+  	`ps -eF`命令，（`-F`选项，显示更多的额外输出）显示系统中运行的所有进程，但比`ps -ef`多显示几列，例如：
+
+```
+lx@lxm:~$ ps -eF | head -10
+UID          PID    PPID  C    SZ   RSS PSR STIME TTY          TIME CMD
+root           1       0  0 41682 11604   1 08:59 ?        00:00:03 /sbin/init splash
+root           2       0  0     0     0   2 08:59 ?        00:00:00 [kthreadd]
+root           3       2  0     0     0   0 08:59 ?        00:00:00 [rcu_gp]
+root           4       2  0     0     0   0 08:59 ?        00:00:00 [rcu_par_gp]
+root           5       2  0     0     0   0 08:59 ?        00:00:00 [slub_flushwq]
+root           6       2  0     0     0   0 08:59 ?        00:00:00 [netns]
+root           8       2  0     0     0   0 08:59 ?        00:00:00 [kworker/0:0H-events_highpri]
+root           9       2  0     0     0   0 08:59 ?        00:00:06 [kworker/0:1-events]
+root          11       2  0     0     0   0 08:59 ?        00:00:00 [mm_percpu_wq]
+```
+
+​	其中，
+
+- RSS：Resident Set Size，表示该进程在未被交换出时占用的物理内存大小
+- PSR：Processor (CPU) Affinity，表示该进程绑定的处理器编号，在多核系统中，处理器的核心编号通常从`0`开始
+
+​	`ps -o format`命令，仅显示由`format`指定的列，例如：
+
+```cmd
+lx@lxm:~$ ps -o uid,pid,cmd,time
+  UID     PID CMD                             TIME
+ 1000    2058 -bash                       00:00:00
+ 1000    3553 ps -o uid,pid,cmd,time      00:00:00
+```
+
+​	可以指定的列有：`uid,pid,ppid,c,sz,rss,psr,stime,tty,time,cmd,pri,ni,addr,wchan`等等
+
+###### BSD风格
+
+​	`ps T`命令，显示与当前终端关联的所有进程，例如：
+
+```cmd
+lx@lxm:~$ ps T
+    PID TTY      STAT   TIME COMMAND
+   2058 pts/0    Ss     0:00 -bash
+   3554 pts/0    R+     0:00 ps T
+```
+
+​	`ps a`命令，显示与任意终端关联的所有进程，例如：
+
+```cmd
+lx@lxm:~$ ps a | head -10
+    PID TTY      STAT   TIME COMMAND
+   1204 tty1     Ssl+   0:00 /usr/libexec/gdm-wayland-session dbus-run-session -- gnome-session --autostart /usr/share/gdm/greeter/autostart
+   1236 tty1     S+     0:00 dbus-run-session -- gnome-session --autostart /usr/share/gdm/greeter/autostart
+   1237 tty1     S+     0:00 dbus-daemon --nofork --print-address 4 --session
+   1238 tty1     Sl+    0:00 /usr/libexec/gnome-session-binary --autostart /usr/share/gdm/greeter/autostart
+   1320 tty1     Sl+    1:04 /usr/bin/gnome-shell
+   1507 tty1     Sl+    0:00 /usr/libexec/at-spi-bus-launcher
+   1516 tty1     S+     0:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 11 --address=unix:path=/run/user/128/at-spi/bus
+   1649 tty1     S+     0:00 /usr/bin/Xwayland :1024 -rootless -noreset -accessx -core -auth /run/user/128/.mutter-Xwaylandauth.23BJM2 -listen 4 -listen 5 -displayfd 6 -initfd 7
+   1723 tty1     Sl+    0:00 /usr/libexec/xdg-permission-store
+```
+
+​	`ps g`命令，显示包括控制进程在内的所有进程，例如：
+
+```cmd
+lx@lxm:~$ ps g
+    PID TTY      STAT   TIME COMMAND
+   2058 pts/0    Ss     0:00 -bash
+   2701 pts/1    Ss+    0:00 -bash
+   3592 pts/0    R+     0:00 ps g
+```
+
+​	`ps r`命令，仅显示运行中的进程，例如：
+
+```cmd
+lx@lxm:~$ ps r
+    PID TTY      STAT   TIME COMMAND
+   3593 pts/0    R+     0:00 ps r
+```
+
+​	`ps l`命令，显示长列表，例如：
+
+```cmd
+lx@lxm:~$ ps l
+F   UID     PID    PPID PRI  NI    VSZ   RSS WCHAN  STAT TTY        TIME COMMAND
+0  1000    2058    2057  20   0  15140  6144 do_wai Ss   pts/0      0:00 -bash
+0  1000    2701    2700  20   0  14624  5760 do_wai Ss   pts/1      0:00 -bash
+0  1000    3596    2701  20   0  16304  4352 do_sel S+   pts/1      0:00 top
+0  1000    3602    2058  20   0  15764  3456 -      R+   pts/0      0:00 ps l
+```
+
+​	其中，
+
+- F：内核分配给该进程的系统标志，常见的值有：
+
+  0：
+
+  1：forked but didn't exec
+
+  4：used super-user privileges
+
+- VSZ：表示该进程占用的虚拟内存大小（以KB为单位）
+
+- STAT：表示当前进程状态的多字符状态码，可能值有：
+
+  `<`：该进程以高优先级运行
+
+  N：该进程以低优先级运行
+
+  L：该进程有锁定在内存中的页面
+
+  s：该进程有控制进程
+
+  l：该进程拥有多线程
+
+  +：该进程在前台运行
+
+###### GNU风格
+
+​	`ps --forest`命令，用层级结构显示出进程和父进程之间的关系，例如：
+
+```cmd
+lx@lxm:~$ bash
+lx@lxm:~$ bash
+lx@lxm:~$ bash
+lx@lxm:~$ ps --forest
+    PID TTY          TIME CMD
+   2058 pts/0    00:00:00 bash
+   3752 pts/0    00:00:00  \_ bash
+   3758 pts/0    00:00:00      \_ bash
+   3764 pts/0    00:00:00          \_ bash
+   3770 pts/0    00:00:00              \_ ps
+```
+
+​	`ps --headers`命令，在每页输出中都显示列名，例如：
+
+```cmd
+ps -ef --headers
+```
+
+​	`ps --format format`命令，仅显示由`format`指定的列，例如：
+
+```cmd
+ps --format uid,pid,ppid,c,sz,rss,psr,stime,tty,time,cmd,pri,ni,addr,wchan
+```
+
+​	可以指定的列有：`uid,pid,ppid,c,sz,rss,psr,stime,tty,time,cmd,pri,ni,addr,wchan`等等
+
+#### 实时监测进程
+
+​	`top`命令，实时显示进程信息，例如：
+
+```cmd
+top
+```
+
+![image-20240425165614677](./book_img/image-20240425165614677.png)
+
+​	可按`PgUp`、`PgDn`键进行翻页查看，按`q`键退出。
+
+​	其中，
+
+- PID：表示该进程ID
+- USER：表示该进程的属主的用户名
+- PR：表示该进程的优先级，可能值为`[-20, 19]`
+- NI：表示进程的谦让度
+- VIRT：表示进程占用的虚拟内存总量
+- RES：表示该进程占用的物理内存总量
+- SHR：表示该进程和其他进程共享的内存总量
+- S：表示该进程的状态，D代表可中断的休眠，R代表运行，S代表休眠，T代表被跟踪或停止，Z代表僵化
+- `%CPU`：表示该进程使用的CPU时间比例
+- `%MEM`：表示该进程使用的可用物理内存比例
+- TIME+：表示自该进程启动到目前为止所占用的CPU时间总量
+- COMMAND：表示该进程所对应的命令行名称，也就是启动的程序名。
+
+#### 结束进程
+
+##### kill
+
+​	`kill 进程ID列表`命令，默认向指定进程发送TERM信号。
+
+> 注意
+>
+> ​	只能是进程的属主或root用户，才能向该进程发送信号。
+
+​	`kill -l` 或 `kill -L`可显示信号列表，也可翻译信号的名称，例如：
+
+```cmd
+lx@lxm:~$ kill -l
+ 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL	 5) SIGTRAP
+ 6) SIGABRT	 7) SIGBUS	 8) SIGFPE	 9) SIGKILL	10) SIGUSR1
+11) SIGSEGV	12) SIGUSR2	13) SIGPIPE	14) SIGALRM	15) SIGTERM
+16) SIGSTKFLT	17) SIGCHLD	18) SIGCONT	19) SIGSTOP	20) SIGTSTP
+21) SIGTTIN	22) SIGTTOU	23) SIGURG	24) SIGXCPU	25) SIGXFSZ
+26) SIGVTALRM	27) SIGPROF	28) SIGWINCH	29) SIGIO	30) SIGPWR
+31) SIGSYS	34) SIGRTMIN	35) SIGRTMIN+1	36) SIGRTMIN+2	37) SIGRTMIN+3
+38) SIGRTMIN+4	39) SIGRTMIN+5	40) SIGRTMIN+6	41) SIGRTMIN+7	42) SIGRTMIN+8
+43) SIGRTMIN+9	44) SIGRTMIN+10	45) SIGRTMIN+11	46) SIGRTMIN+12	47) SIGRTMIN+13
+48) SIGRTMIN+14	49) SIGRTMIN+15	50) SIGRTMAX-14	51) SIGRTMAX-13	52) SIGRTMAX-12
+53) SIGRTMAX-11	54) SIGRTMAX-10	55) SIGRTMAX-9	56) SIGRTMAX-8	57) SIGRTMAX-7
+58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2
+63) SIGRTMAX-1	64) SIGRTMAX	
+lx@lxm:~$ man kill
+lx@lxm:~$ kill -l 1
+HUP
+lx@lxm:~$ kill -l 2
+INT
+```
+
+​	`kill -s 信号名称 进程ID列表` 或 `kill -信号 进程ID列表`命令，可以给指定进程发送特定信号。
+
+##### pkill
+
+
+
+### 监测磁盘空间
+
+#### 挂载存储设备
+
+#### 使用df命令
+
+#### 使用du命令
+
+### 处理数据文件
+
+#### 数据排序
+
+#### 数据搜索
+
+#### 数据压缩
+
+#### 数据归档
 
 ## 理解shell
 
